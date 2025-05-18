@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Checkout - KNO GAMES</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <header>
+    <h1>Checkout</h1>
+  </header>
+ 
+  <nav>
+    <a href="index.html">Home</a>
+    <a href="about.html">About Us</a>
+    <a href="contact.html">Contact</a>
+  </nav>
+ 
+  <main class="content">
+    <h2>Your Cart</h2>
+    <div class="cart">
+      <ul id="checkout-cart"></ul>
+      <p><strong>Total:</strong> $<span id="checkout-total">0.00</span></p>
+    </div>
+ 
+    <h2>Shipping Information</h2>
+    <form id="checkout-form">
+      <input type="text" id="name" name="name" placeholder="Full Name" required>
+      <input type="text" id="address" name="address" placeholder="Address" required>
+      <input type="text" id="city" name="city" placeholder="City" required>
+      <input type="text" id="zip" name="zip" placeholder="ZIP Code" required>
+ 
+      <h2>Payment Details</h2>
+      <input type="text" id="card" name="card" placeholder="Card Number (Fake)" required>
+      <input type="text" id="expiry" name="expiry" placeholder="MM/YY" required>
+      <input type="text" id="cvv" name="cvv" placeholder="CVV" required>
+ 
+      <button class="btn" type="submit">Place Order</button>
+    </form>
+ 
+    <div id="confirmation" style="display:none; margin-top:20px;">
+      <h3>Thank you for your purchase!</h3>
+      <p>Your order number is: <strong id="order-number"></strong></p>
+      <p>You will be redirected to the home page shortly.</p>
+    </div>
+  </main>
+ 
+  <script src="checkout.js"></script>
+</body>
+</html>
