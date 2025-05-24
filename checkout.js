@@ -6,12 +6,12 @@ document.addEventListener("DOMContentLoaded", function () {
   let total = 0;
   cartItems.forEach(item => {
     const li = document.createElement("li");
-    li.textContent = `P${item.product} - P${item.price.toFixed(2)}`;
+    li.textContent = `${item.product} - ${item.price.toFixed(2)}`;
     cartList.appendChild(li);
     total += item.price;
   });
 
-  totalElement.textContent = `P${total.toFixed(2)}`;
+  totalElement.textContent = `${total.toFixed(2)}`;
 });
 
 document.getElementById("checkout-form").addEventListener("submit", function (e) {
