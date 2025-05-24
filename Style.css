@@ -150,12 +150,12 @@ form button {
 form button:hover {
   background-color: #138496;
 }
- @media (max-witdth: 600px) {
+ @media (max-width: 600px) {
    .product {
-     width: 90%
+     width: 90%;
    }
   #description-box {
-    width: 90%
-    top: 10%
+    width: 90%;
+    top: 10%;
    }
  }
