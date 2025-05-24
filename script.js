@@ -109,20 +109,20 @@ function updateCart(){
     cartItem.innerHTML="";
     cart.forEach((item)=> {
         const li= document.createElement("li");
-        li.textContent=${item.product}-$${item.price.toFixed(2)}``;
-        cartItems.appendChild(li);
+        li.textContent = ${item.product} - $${item.price.toFixed(2)}`;
+        cartItem.appendChild(li);
     });
     document.getElementById("total").textContent=total.toFixed(2);
 }
 
 function showDescription(key) {
-    document.getElementById("game-title").textContent=gameData[key].title;
-    document.getElementById("game-descprition").textContent=gameData[key].description;
-    document.getElementById("description-box").style.diplay="block";
+    document.getElementById("game-title").textContent = gameData[key].title;
+    document.getElementById("game-description").textContent = gameData[key].description;
+    document.getElementById("description-box").style.display = "block";
 }
 
 function closeDescription() {
-    document.getElementById("description-box").style.diplay="none";
+    document.getElementById("description-box").style.diplay = "none";
 }
 
 function goToCheckout() {
