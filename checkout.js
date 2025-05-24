@@ -11,7 +11,7 @@ document.addEventListener("DOMContentLoaded", function () {
     total += item.price;
   });
 
-  totalElement.textContent = `$${total.toFixed(2)}`;
+  totalElement.textContent = `P{total.toFixed(2)}`;
 });
 
 document.getElementById("checkout-form").addEventListener("submit", function (e) {
