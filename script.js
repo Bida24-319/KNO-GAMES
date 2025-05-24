@@ -129,3 +129,21 @@ function closeDescription() {
 function goToCheckout() {
   window.location.href = "checkout.html";
 }
+function renderCart() {
+  const cartItems = JSON.parse(localStorage.getItem("cart")) || [];
+  const cartList = document.getElementById("cart-items");
+  const totalEl = document.getElementById("total");
+
+  cartList.innerHTML = "";
+  let total = 0;
+
+  cartItems.forEach(item => {
+    const li = document.createElement("li");
+    li.textContent = `${item.product} - P${item.price.toFixed(2)}`;
+    cartList.appendChild(li);
+    total += item.price;
+  });
+
+  totalEl.textContent = total.toFixed(2);
+}
+
