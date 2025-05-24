@@ -76,13 +76,13 @@ main.content {
   background-color: #28a745;
   color: white;
   border: none;
-  padding: 8px 12px;
-  border-radius: 4px;
+  padding: 10px 16px;
+  border-radius: 5px;
   cursor: pointer;
 }
  
 .btn:hover {
-  background-color: #218838;
+  background-color: #0069d9;
 }
  
 /* Description popup */
