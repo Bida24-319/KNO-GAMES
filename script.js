@@ -109,7 +109,7 @@ function updateCart(){
     cartItem.innerHTML="";
     cart.forEach((item)=> {
         const li= document.createElement("li");
-        li.textContent = ${item.product} - $${item.price.toFixed(2)}`;
+        li.textContent = '${item.product} - $${item.price.toFixed(2)}`;
         cartItem.appendChild(li);
     });
     document.getElementById("total").textContent=total.toFixed(2);
