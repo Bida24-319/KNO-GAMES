@@ -109,7 +109,7 @@ function updateCart() {
   cartItem.innerHTML = "";
   cart.forEach((item) => {
     const li = document.createElement("li");
-    li.textContent = `${item.product} - $${item.price.toFixed(2)}`;
+    li.textContent = `P${item.product} - P${item.price.toFixed(2)}`;
     cartItem.appendChild(li);
   });
   document.getElementById("total").textContent = total.toFixed(2);
@@ -139,7 +139,7 @@ function renderCart() {
 
   cartItems.forEach(item => {
     const li = document.createElement("li");
-    li.textContent = `${item.product} - P${item.price.toFixed(2)}`;
+    li.textContent = `P${item.product} - P${item.price.toFixed(2)}`;
     cartList.appendChild(li);
     total += item.price;
   });
@@ -157,7 +157,7 @@ function updateCartUI() {
 
   cartItems.forEach(item => {
     const li = document.createElement("li");
-    li.textContent = `${item.product} - P${item.price.toFixed(2)}`;
+    li.textContent = `P${item.product} - P${item.price.toFixed(2)}`;
     cartList.appendChild(li);
     totalLocal += item.price;
   });
