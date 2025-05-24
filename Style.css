@@ -71,7 +71,7 @@ main.content {
   cursor: pointer;
 }
  
-.btn {
+.btn-green {
   margin-top: 10px;
   background-color: #28a745;
   color: white;
@@ -81,8 +81,8 @@ main.content {
   cursor: pointer;
 }
  
-.btn:hover {
-  background-color: #0069d9;
+.btn-green:hover {
+  background-color: #218838;
 }
  
 /* Description popup */
@@ -114,7 +114,7 @@ ul {
   padding-left: 0;
 }
  
-.btn {
+.btn-blue {
   background-color: #007bff;
   padding: 10px 16px;
   color: white;
@@ -122,6 +122,10 @@ ul {
   border-radius: 5px;
   margin-top: 10px;
   cursor: pointer;
+}
+
+.btn-blue:hover {
+  background-color:#0069d9;
 }
  
 .checkout-btn:hover {
