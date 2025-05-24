@@ -147,3 +147,22 @@ function renderCart() {
   totalEl.textContent = total.toFixed(2);
 }
 
+function updateCartUI() {
+  const cartItems = JSON.parse(localStorage.getItem("cart")) || cart;
+  const cartList = document.getElementById("cart-items");
+  const totalEl = document.getElementById("total");
+
+  cartList.innerHTML = "";
+  let totalLocal = 0;
+
+  cartItems.forEach(item => {
+    const li = document.createElement("li");
+    li.textContent = `${item.product} - P${item.price.toFixed(2)}`;
+    cartList.appendChild(li);
+    totalLocal += item.price;
+  });
+
+  totalEl.textContent = totalLocal.toFixed(2);
+  // Update global total as well, just in case
+  total = totalLocal;
+}
