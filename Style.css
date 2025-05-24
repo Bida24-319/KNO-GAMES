@@ -43,7 +43,7 @@ main.content {
   margin: auto;
 }
  
-.games {
+.store {
   display: flex;
   flex-wrap: wrap;
   gap: 20px;
@@ -51,7 +51,7 @@ main.content {
   margin-top: 20px;
 }
  
-.game-card {
+.product {
   background: white;
   border-radius: 8px;
   box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
@@ -61,11 +61,11 @@ main.content {
   transition: transform 0.2s ease;
 }
  
-.game-card:hover {
+.product:hover {
   transform: scale(1.05);
 }
  
-.game-card img {
+.product img {
   width: 100%;
   border-radius: 6px;
   cursor: pointer;
@@ -150,4 +150,12 @@ form button {
 form button:hover {
   background-color: #138496;
 }
- 
+ @media (max-witdth: 600px) {
+   .product {
+     width: 90%
+   }
+  #description-box {
+    width: 90%
+    top: 10%
+   }
+ }
