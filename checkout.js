@@ -6,7 +6,7 @@ document.addEventListener("DOMContentLoaded", function () {
   let total = 0;
   cartItems.forEach(item => {
     const li = document.createElement("li");
-li.textContent = `${item.name} - $${item.price.toFixed(2)}`;
+li.textContent = `${item.product} - $${item.price.toFixed(2)}`;
     cartList.appendChild(li);
     total += item.price;
   });
@@ -24,6 +24,7 @@ document.getElementById("checkout-form").addEventListener("submit", function (e)
   document.getElementById("confirmation").style.display = "block";
  
   localStorage.removeItem("cart");
+  localStorage.removeItem("total");
  
   setTimeout(() => {
     window.location.href = "index.html";
