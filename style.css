@@ -221,11 +221,10 @@ button.checkout:hover {
    ======================== */
 @media (max-width: 768px) {
   .container {
-    flex-direction: column;
     align-items: center;
     padding: 10px;
   }
-
+}
   .game-card {
     width: 90%;
     margin: 10px 0;
