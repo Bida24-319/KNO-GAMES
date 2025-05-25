@@ -6,7 +6,7 @@ document.addEventListener("DOMContentLoaded", function () {
   let total = 0;
   cartItems.forEach(item => {
     const li = document.createElement("li");
-    li.textContent = `P${item.product} - P${item.price.toFixed(2)}`;
+    li.textContent = `${item.product} - P${item.price.toFixed(2)}`;
     cartList.appendChild(li);
     total += item.price;
   });
