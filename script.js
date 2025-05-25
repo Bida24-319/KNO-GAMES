@@ -161,9 +161,12 @@ function goToCheckout() {
 document.addEventListener("DOMContentLoaded", renderCart);
 
 function clearCart() {
-  cart = [];
-  saveCart();
-  renderCart();
+  const confirmClear = confirm("Are you sure you want to clear the cart?");
+  if (confirmClear) {
+    cart = [];
+    saveCart();
+    renderCart();
+  }
 }
 
 function updateCartCount() {
