@@ -174,7 +174,7 @@ main.content {
   animation: fadeIn 0.3s ease-in-out;
 }
 
-#cart-items li {
+.cart-page #cart-items li {
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -192,7 +192,7 @@ main.content {
   margin-top: 1rem;
 }
 
-.checkout-btn {
+.cart-page .checkout-btn {
   padding: 10px 20px;
   background-color: #0077cc;
   color: white;
@@ -203,11 +203,11 @@ main.content {
   width: 100%;
 }
 
-.checkout-btn:hover {
+.cart-page .checkout-btn:hover {
   background-color: #005fa3;
 }
 
-.remove-btn {
+.cart-page .remove-btn {
   background-color: #dc3545;
   color: #fff;
   border: none;
