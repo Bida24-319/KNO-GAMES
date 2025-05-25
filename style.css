@@ -236,3 +236,60 @@ button.checkout:hover {
   }
 }
 
+#floating-cart-btn {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  background-color: #0d6efd;
+  color: white;
+  border: none;
+  border-radius: 50px;
+  padding: 10px 15px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.6);
+  font-size: 18px;
+  z-index: 1000;
+  cursor: pointer;
+}
+
+#floating-cart-btn:hover {
+  background-color: #0a58ca;
+}
+
+#cart-drawer {
+  position: fixed;
+  bottom: -100%;
+  left: 0;
+  right: 0;
+  background-color: #1e1e1e;
+  color: white;
+  padding: 20px;
+  box-shadow: 0 -5px 15px rgba(0, 0, 0, 0.7);
+  transition: bottom 0.3s ease;
+  z-index: 999;
+  border-top-left-radius: 15px;
+  border-top-right-radius: 15px;
+}
+
+#cart-drawer.open {
+  bottom: 0;
+}
+
+#drawer-cart-items {
+  list-style: none;
+  padding-left: 0;
+}
+
+#drawer-cart-items li {
+  margin: 10px 0;
+  font-size: 0.95em;
+}
+
+.drawer-footer {
+  margin-top: 20px;
+  text-align: center;
+}
+
+.drawer-footer p {
+  font-weight: bold;
+  margin-bottom: 10px;
+}
