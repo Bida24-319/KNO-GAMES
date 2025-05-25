@@ -13,11 +13,30 @@ h1, h2 {
   color: #ffffff;
 }
 
+/* Container uses CSS Grid for 4x5 layout */
 .container {
-  display: flex;
-  flex-wrap: wrap;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr); /* 4 columns */
+  grid-template-rows: repeat(5, auto);   /* 5 rows */
+  gap: 20px;
   padding: 20px;
-  justify-content: center;
+  justify-items: center;
+}
+
+/* Responsive adjustments for smaller screens */
+@media (max-width: 1024px) {
+  .container {
+    grid-template-columns: repeat(2, 1fr); /* 2 columns on medium screens */
+    grid-template-rows: auto;
+  }
+}
+
+@media (max-width: 600px) {
+  .container {
+    grid-template-columns: 1fr; /* 1 column on small screens */
+    grid-template-rows: auto;
+    padding: 10px;
+  }
 }
 
 /* Navigation Bar */
@@ -50,7 +69,6 @@ nav a:focus {
   outline: none;
 }
 
-/* Responsive nav spacing */
 @media (max-width: 600px) {
   nav a {
     display: block;
@@ -63,11 +81,13 @@ nav a:focus {
   background: #1e1e1e;
   border: 1px solid #333;
   border-radius: 10px;
-  margin: 10px;
   padding: 15px;
-  width: 250px;
+  width: 100%; /* Full width of grid cell */
   box-shadow: 0 2px 6px rgba(0, 0, 0, 0.5);
   transition: transform 0.2s ease, box-shadow 0.2s ease;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 .game-card:hover {
@@ -78,9 +98,12 @@ nav a:focus {
 .game-card h3 {
   margin: 0 0 10px 0;
   color: #f1f1f1;
+  text-align: center;
+  width: 100%;
 }
 
 .game-card button {
+  margin-top: auto; /* Push buttons to bottom if needed */
   margin-right: 10px;
   padding: 5px 10px;
   border: none;
@@ -92,6 +115,17 @@ nav a:focus {
 
 .game-card button:hover {
   background-color: #0a58ca;
+}
+
+/* Center images inside cards */
+.game-card img,
+.product img {
+  display: block;
+  margin: 0 auto 10px auto;
+  width: 80%;
+  height: auto;
+  object-fit: contain;
+  border-radius: 8px;
 }
 
 /* Cart Section */
@@ -216,18 +250,10 @@ button.checkout:hover {
   background-color: #0a58ca;
 }
 
-/* ========================
-   Mobile Responsive Design
-   ======================== */
+/* Mobile Responsive Design */
 @media (max-width: 768px) {
-  .container {
-    align-items: center;
-    padding: 10px;
-  }
-}
   .game-card {
-    width: 90%;
-    margin: 10px 0;
+    width: 90%; /* Make cards full width on smaller devices */
   }
 
   #cart {
@@ -274,6 +300,7 @@ button.checkout:hover {
   }
 }
 
+/* Floating Cart Button */
 #floating-cart-btn {
   position: fixed;
   bottom: 20px;
@@ -293,6 +320,7 @@ button.checkout:hover {
   background-color: #0a58ca;
 }
 
+/* Cart Drawer */
 #cart-drawer {
   position: fixed;
   bottom: -100%;
@@ -331,17 +359,7 @@ button.checkout:hover {
   font-weight: bold;
   margin-bottom: 10px;
 }
-.game-card img,
-.product img {
-  display: block;
-  margin: 0 auto 10px auto; /* top 0, horizontal auto, bottom 10px */
-  width: 80%; /* or a fixed width if you want */
-  max-width: 200px;
-  max-height: 200px;
-  height: auto; /* keep or adjust */
-  object-fit: cover;
-  border-radius: 8px;
-}
+
 
 
 
