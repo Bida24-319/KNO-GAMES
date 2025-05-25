@@ -44,12 +44,11 @@ main.content {
 }
  
 .games {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr); /* 4 columns */
-  grid-auto-rows: auto;                  /* Automatically adjust row height */
+  display: flex;
+  flex-wrap: wrap;
   gap: 20px;
-  justify-items: center;
-  margin-top: 20px;
+  justify-content: center;
+  margin-tp: 20px;
 }
  
 .game-card {
