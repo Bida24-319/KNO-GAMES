@@ -192,4 +192,28 @@ document.getElementById("cart-items").addEventListener("click", (e) => {
   }
 });
 
+document.getElementById("floating-cart-btn").addEventListener("click", toggleCartDrawer);
+
+function toggleCartDrawer() {
+  const drawer = document.getElementById("cart-drawer");
+  drawer.classList.toggle("open");
+  renderDrawerCart();
+}
+
+function renderDrawerCart() {
+  const drawerList = document.getElementById("drawer-cart-items");
+  const totalElement = document.getElementById("drawer-total");
+  drawerList.innerHTML = "";
+
+  let total = 0;
+  cart.forEach(item => {
+    const itemTotal = item.price * item.quantity;
+    total += itemTotal;
+    const li = document.createElement("li");
+    li.textContent = `${item.product} - P${item.price.toFixed(2)} x ${item.quantity} = P${itemTotal.toFixed(2)}`;
+    drawerList.appendChild(li);
+  });
+
+  totalElement.textContent = total.toFixed(2);
+}
 
