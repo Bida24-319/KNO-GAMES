@@ -44,10 +44,11 @@ main.content {
 }
  
 .games {
-  display: flex;
-  flex-wrap: wrap;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr); /* 4 columns */
+  grid-auto-rows: auto;                  /* Automatically adjust row height */
   gap: 20px;
-  justify-content: center;
+  justify-items: center;
   margin-top: 20px;
 }
  
@@ -150,6 +151,18 @@ form button {
 form button:hover {
   background-color: #138496;
 }
+@media (max-width: 768px) {
+  .games {
+    grid-template-columns: repeat(2, 1fr); /* 2 columns on tablets */
+  }
+}
+
+@media (max-width: 500px) {
+  .games {
+    grid-template-columns: 1fr; /* 1 column on phones */
+  }
+}
+
 
 
 
