@@ -166,3 +166,40 @@ function updateCartUI() {
   // Update global total as well, just in case
   total = totalLocal;
 }
+// Initialize cart
+let cart = JSON.parse(localStorage.getItem("cart")) || [];
+
+function addToCart(product, price) {
+  cart.push({ product, price });
+  localStorage.setItem("cart", JSON.stringify(cart));
+  renderCart();
+}
+
+function removeFromCart(index) {
+  cart.splice(index, 1);
+  localStorage.setItem("cart", JSON.stringify(cart));
+  renderCart();
+}
+
+function renderCart() {
+  const cartList = document.getElementById("cart-items");
+  const totalElement = document.getElementById("total");
+
+  cartList.innerHTML = ""; // Clear previous items
+  let total = 0;
+
+  cart.forEach((item, index) => {
+    const li = document.createElement("li");
+    li.innerHTML = `
+      ${item.product} - P${item.price.toFixed(2)}
+      <button onclick="removeFromCart(${index})" style="margin-left:10px;">Remove</button>
+    `;
+    cartList.appendChild(li);
+    total += item.price;
+  });
+
+  totalElement.textContent = total.toFixed(2);
+}
+
+// Run on load
+document.addEventListener("DOMContentLoaded", renderCart);
