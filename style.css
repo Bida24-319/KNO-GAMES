@@ -333,12 +333,14 @@ button.checkout:hover {
   margin-bottom: 10px;
 }
 .game-card img,
-.product img{
-  width: 100%;
-  height: auto; /* or another fixed height */
-  object-fit: contain;
+.product img {
+  display: block;
+  margin: 0 auto 10px auto; /* top 0, horizontal auto, bottom 10px */
+  width: 100%; /* or a fixed width if you want */
+  height: 200px; /* keep or adjust */
+  object-fit: cover;
   border-radius: 8px;
-  margin-bottom: 10px;
 }
+
 
 
