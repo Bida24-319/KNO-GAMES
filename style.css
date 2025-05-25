@@ -336,9 +336,9 @@ button.checkout:hover {
 .product img {
   display: block;
   margin: 0 auto 10px auto; /* top 0, horizontal auto, bottom 10px */
-  width: 100%; /* or a fixed width if you want */
-  height: 200px; /* keep or adjust */
-  object-fit: cover;
+  width: 80%; /* or a fixed width if you want */
+  height: auto; /* keep or adjust */
+  object-fit: contain;
   border-radius: 8px;
 }
 
