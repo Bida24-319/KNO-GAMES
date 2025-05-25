@@ -337,8 +337,10 @@ button.checkout:hover {
   display: block;
   margin: 0 auto 10px auto; /* top 0, horizontal auto, bottom 10px */
   width: 80%; /* or a fixed width if you want */
+  max-width: 200px;
+  max-height: 200px;
   height: auto; /* keep or adjust */
-  object-fit: contain;
+  object-fit: cover;
   border-radius: 8px;
 }
 
