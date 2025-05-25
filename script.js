@@ -131,9 +131,9 @@ function renderCart() {
     const li = document.createElement("li");
     li.innerHTML = `
       ${item.product} - P${item.price.toFixed(2)} x ${item.quantity} = P${itemTotal.toFixed(2)}
-      <button onclick="changeQuantity(${index}, 1)">+</button>
-      <button onclick="changeQuantity(${index}, -1)">−</button>
-      <button onclick="removeFromCart(${index})">Remove</button>
+      <button class="increase" data-index="${index}">+</button>
+      <button class="decrease" data-index="${index}">−</button>
+      <button class="remove" data-index="${index}">Remove</button>
     `;
     cartList.appendChild(li);
   });
@@ -159,4 +159,34 @@ function goToCheckout() {
 
 // On page load
 document.addEventListener("DOMContentLoaded", renderCart);
+
+function clearCart() {
+  cart = [];
+  saveCart();
+  renderCart();
+}
+
+function updateCartCount() {
+  const countElement = document.getElementById("cart-count");
+  if (countElement) {
+    const totalItems = cart.reduce((sum, item) => sum + item.quantity, 0);
+    countElement.textContent = totalItems;
+  }
+}
+function saveCart() {
+  localStorage.setItem("cart", JSON.stringify(cart));
+  updateCartCount();
+}
+
+document.getElementById("cart-items").addEventListener("click", (e) => {
+  const index = parseInt(e.target.dataset.index);
+  if (e.target.classList.contains("increase")) {
+    changeQuantity(index, 1);
+  } else if (e.target.classList.contains("decrease")) {
+    changeQuantity(index, -1);
+  } else if (e.target.classList.contains("remove")) {
+    removeFromCart(index);
+  }
+});
+
 
