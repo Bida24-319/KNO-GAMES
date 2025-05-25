@@ -81,40 +81,67 @@ const gameData = {
   }
 };
 
-let cart = [];
-let total = 0;
+let cart = JSON.parse(localStorage.getItem("cart")) || [];
 
-window.onload = function () {
-  const storedCart = JSON.parse(localStorage.getItem("cart")) || [];
-  const storedTotal = JSON.parse(localStorage.getItem("total")) || 0;
-  cart = storedCart;
-  total = storedTotal;
-  updateCart();
-};
-
+// Add item to cart with quantity check
 function addToCart(product, price) {
-  cart.push({ product, price });
-  total += price;
+  const index = cart.findIndex(item => item.product === product);
+  if (index !== -1) {
+    cart[index].quantity += 1;
+  } else {
+    cart.push({ product, price, quantity: 1 });
+  }
   saveCart();
-  updateCart();
+  renderCart();
 }
 
+// Save to localStorage
 function saveCart() {
   localStorage.setItem("cart", JSON.stringify(cart));
-  localStorage.setItem("total", JSON.stringify(total));
 }
 
-function updateCart() {
-  const cartItem = document.getElementById("cart-items");
-  cartItem.innerHTML = "";
-  cart.forEach((item) => {
+// Remove item completely
+function removeFromCart(index) {
+  cart.splice(index, 1);
+  saveCart();
+  renderCart();
+}
+
+// Update quantity
+function changeQuantity(index, delta) {
+  cart[index].quantity += delta;
+  if (cart[index].quantity < 1) {
+    cart.splice(index, 1); // Remove if quantity becomes 0
+  }
+  saveCart();
+  renderCart();
+}
+
+// Render cart
+function renderCart() {
+  const cartList = document.getElementById("cart-items");
+  const totalElement = document.getElementById("total");
+  cartList.innerHTML = "";
+
+  let total = 0;
+  cart.forEach((item, index) => {
+    const itemTotal = item.price * item.quantity;
+    total += itemTotal;
+
     const li = document.createElement("li");
-    li.textContent = `P${item.product} - P${item.price.toFixed(2)}`;
-    cartItem.appendChild(li);
+    li.innerHTML = `
+      ${item.product} - P${item.price.toFixed(2)} x ${item.quantity} = P${itemTotal.toFixed(2)}
+      <button onclick="changeQuantity(${index}, 1)">+</button>
+      <button onclick="changeQuantity(${index}, -1)">−</button>
+      <button onclick="removeFromCart(${index})">Remove</button>
+    `;
+    cartList.appendChild(li);
   });
-  document.getElementById("total").textContent = total.toFixed(2);
+
+  totalElement.textContent = total.toFixed(2);
 }
 
+// Show game description
 function showDescription(key) {
   if (!gameData[key]) return;
   document.getElementById("game-title").textContent = gameData[key].title;
@@ -129,77 +156,7 @@ function closeDescription() {
 function goToCheckout() {
   window.location.href = "checkout.html";
 }
-function renderCart() {
-  const cartItems = JSON.parse(localStorage.getItem("cart")) || [];
-  const cartList = document.getElementById("cart-items");
-  const totalEl = document.getElementById("total");
 
-  cartList.innerHTML = "";
-  let total = 0;
-
-  cartItems.forEach(item => {
-    const li = document.createElement("li");
-    li.textContent = `P${item.product} - P${item.price.toFixed(2)}`;
-    cartList.appendChild(li);
-    total += item.price;
-  });
-
-  totalEl.textContent = total.toFixed(2);
-}
-
-function updateCartUI() {
-  const cartItems = JSON.parse(localStorage.getItem("cart")) || cart;
-  const cartList = document.getElementById("cart-items");
-  const totalEl = document.getElementById("total");
-
-  cartList.innerHTML = "";
-  let totalLocal = 0;
-
-  cartItems.forEach(item => {
-    const li = document.createElement("li");
-    li.textContent = `P${item.product} - P${item.price.toFixed(2)}`;
-    cartList.appendChild(li);
-    totalLocal += item.price;
-  });
-
-  totalEl.textContent = totalLocal.toFixed(2);
-  // Update global total as well, just in case
-  total = totalLocal;
-}
-// Initialize cart
-let cart = JSON.parse(localStorage.getItem("cart")) || [];
-
-function addToCart(product, price) {
-  cart.push({ product, price });
-  localStorage.setItem("cart", JSON.stringify(cart));
-  renderCart();
-}
-
-function removeFromCart(index) {
-  cart.splice(index, 1);
-  localStorage.setItem("cart", JSON.stringify(cart));
-  renderCart();
-}
-
-function renderCart() {
-  const cartList = document.getElementById("cart-items");
-  const totalElement = document.getElementById("total");
-
-  cartList.innerHTML = ""; // Clear previous items
-  let total = 0;
-
-  cart.forEach((item, index) => {
-    const li = document.createElement("li");
-    li.innerHTML = `
-      ${item.product} - P${item.price.toFixed(2)}
-      <button onclick="removeFromCart(${index})" style="margin-left:10px;">Remove</button>
-    `;
-    cartList.appendChild(li);
-    total += item.price;
-  });
-
-  totalElement.textContent = total.toFixed(2);
-}
-
-// Run on load
+// On page load
 document.addEventListener("DOMContentLoaded", renderCart);
+
