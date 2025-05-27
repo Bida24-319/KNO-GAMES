@@ -3,34 +3,46 @@ document.addEventListener("DOMContentLoaded", function () {
   const cartList = document.getElementById("checkout-cart");
   const totalElement = document.getElementById("checkout-total");
 
+  if (!cartList || !totalElement) return; // Safety check if elements missing
+
   let total = 0;
   cartItems.forEach(item => {
     const li = document.createElement("li");
-    li.textContent = `${item.product} - P${item.price.toFixed(2)}`;
+    li.textContent = `${item.product} - P${(item.price * item.quantity).toFixed(2)} x ${item.quantity}`;
     cartList.appendChild(li);
-    total += item.price;
+    total += item.price * item.quantity;
   });
 
   totalElement.textContent = `P${total.toFixed(2)}`;
 });
 
-document.getElementById("checkout-form").addEventListener("submit", function (e) {
-  e.preventDefault();
+const checkoutForm = document.getElementById("checkout-form");
 
-  // Generate random order number
-  const orderNumber = "GH" + Math.floor(Math.random() * 90000 + 10000);
-  document.getElementById("order-number").textContent = orderNumber;
+if (checkoutForm) {
+  checkoutForm.addEventListener("submit", function (e) {
+    e.preventDefault();
 
-  // Hide form, show confirmation
-  document.getElementById("checkout-form").style.display = "none";
-  document.getElementById("confirmation").style.display = "block";
+    // Generate random order number
+    const orderNumber = "GH" + Math.floor(Math.random() * 90000 + 10000);
+    const orderNumberElement = document.getElementById("order-number");
+    if (orderNumberElement) {
+      orderNumberElement.textContent = orderNumber;
+    }
 
-  // Clear localStorage
-  localStorage.removeItem("cart");
-  localStorage.removeItem("total");
+    // Hide form, show confirmation message
+    this.style.display = "none";
+    const confirmation = document.getElementById("confirmation");
+    if (confirmation) {
+      confirmation.style.display = "block";
+    }
 
-  // Redirect after 5 seconds
-  setTimeout(() => {
-    window.location.href = "index.html";
-  }, 5000);
-});
+    // Clear cart data
+    localStorage.removeItem("cart");
+    localStorage.removeItem("total");
+
+    // Redirect back to home after 5 seconds
+    setTimeout(() => {
+      window.location.href = "index.html";
+    }, 5000);
+  });
+}
