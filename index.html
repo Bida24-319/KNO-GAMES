@@ -1,172 +1,275 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8"/>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-    <title>KNO GAMES</title>
-    <link rel="stylesheet" href="style.css"/>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>KNO GAMES</title>
+
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" />
+  
+  <link rel="stylesheet" href="style.css">
+
 </head>
-<body>
-    <header>
-        <h1>KNO GAMES</h1>
-    </header>
- 
-    <nav>
-        <a href="index.html">Home</a>
-        <a href="mycart.html">MyCart</a>
-        <a href="checkout.html">Checkout</a>
-        <a href="contact.html">Contact</a>
-        <a href="about.html">About Us</a>
-    </nav>
- 
-    <div class="store">
-        <div class="product" onclick="showDescription('God Of War')">
-            <img src="Images/God_of_War_4_cover.jpg" alt="God Of War"/>
-            <h3>God Of War</h3>
-            <p>P75.99</p>
-            <button class="btn" onclick="event.stopPropagation(); addToCart('God Of War', 75.99)">Add To Cart</button>
-        </div>
- 
-        <div class="product" onclick="showDescription('Zenless Zone Zero')">
-            <img src="Images/Zenless_Zone_Zero.png" alt="Zenless Zone Zero"/>
-            <h3>Zenless Zone Zero</h3>
-            <p>P50.99</p>
-            <button class="btn" onclick="event.stopPropagation(); addToCart('Zenless Zone Zero', 50.99)">Add To Cart</button>
-        </div>
- 
-        <div class="product" onclick="showDescription('Genshin Impact')">
-            <img src="Images/Genshin_impact.jpg" alt="Genshin Impact"/>
-            <h3>Genshin Impact</h3>
-            <p>P29.99</p>
-            <button class="btn" onclick="event.stopPropagation(); addToCart('Genshin Impact', 29.99)">Add To Cart</button>
-        </div>
- 
-        <div class="product" onclick="showDescription('Wuthering Waves')">
-            <img src="Images/wuthering-waves-uw6vy.jpg" alt="Wuthering Waves"/>
-            <h3>Wuthering Waves</h3>
-            <p>P29.99</p>
-            <button class="btn" onclick="event.stopPropagation(); addToCart('Wuthering Waves', 29.99)">Add To Cart</button>
-        </div>
- 
-        <div class="product" onclick="showDescription('Red Dead Redemption')">
-            <img src="Images/Red_Dead_Redemption.jpg" alt="Red Dead Redemption"/>
-            <h3>Red Dead Redemption</h3>
-            <p>P60.99</p>
-            <button class="btn" onclick="event.stopPropagation(); addToCart('Red Dead Redemption', 60.99)">Add To Cart</button>
-        </div>
- 
-        <div class="product" onclick="showDescription('Red Dead Redemption 2')">
-            <img src="Images/Red_dead_Redemption_2.png" alt="Red Dead Redemption 2"/>
-            <h3>Red Dead Redemption 2</h3>
-            <p>P75.99</p>
-            <button class="btn" onclick="event.stopPropagation(); addToCart('Red Dead Redemption 2', 75.99)">Add To Cart</button>
-        </div>
- 
-        <div class="product" onclick="showDescription('Portal')">
-            <img src="Images/250px-Portal_standalonebox.jpg" alt="Portal"/>
-            <h3>Portal</h3>
-            <p>P29.99</p>
-            <button class="btn" onclick="event.stopPropagation(); addToCart('Portal', 29.99)">Add To Cart</button>
-        </div>
- 
-        <div class="product" onclick="showDescription('The Last Of Us')">
-            <img src="Images/The_Last_of_Us.jpg" alt="The Last Of Us"/>
-            <h3>The Last Of Us</h3>
-            <p>P49.99</p>
-            <button class="btn" onclick="event.stopPropagation(); addToCart('The Last Of Us', 49.99)">Add To Cart</button>
-        </div>
- 
-        <div class="product" onclick="showDescription('The Last Of Us 2')">
-            <img src="Images/TLOU_P2_Box_Art_2.png" alt="The Last Of Us 2"/>
-            <h3>The Last Of Us 2</h3>
-            <p>P69.99</p>
-            <button class="btn" onclick="event.stopPropagation(); addToCart('The Last Of Us 2', 69.99)">Add To Cart</button>
-        </div>
- 
-        <div class="product" onclick="showDescription('Rocket League')">
-            <img src="Images/Rocket_League_cover.png" alt="Rocket League"/>
-            <h3>Rocket League</h3>
-            <p>P19.99</p>
-            <button class="btn" onclick="event.stopPropagation(); addToCart('Rocket League', 19.99)">Add To Cart</button>
-        </div>
- 
-        <div class="product" onclick="showDescription('Hollow Knight')">
-            <img src="Images/274px-Hollow_Knight_first_cover_art.webp.png" alt="Hollow Knight"/>
-            <h3>Hollow Knight</h3>
-            <p>P49.99</p>
-            <button class="btn" onclick="event.stopPropagation(); addToCart('Hollow Knight', 49.99)">Add To Cart</button>
-        </div>
- 
-        <div class="product" onclick="showDescription('SpiderMan')">
-            <img src="Images/Marvels_spider_man.png" alt="SpiderMan"/>
-            <h3>SpiderMan</h3>
-            <p>P79.99</p>
-            <button class="btn" onclick="event.stopPropagation(); addToCart('SpiderMan', 79.99)">Add To Cart</button>
-        </div>
- 
-        <div class="product" onclick="showDescription('Undertale')">
-            <img src="Images/Undertale.jpg" alt="UnderTale"/>
-            <h3>UnderTale</h3>
-            <p>P59.99</p>
-            <button class="btn" onclick="event.stopPropagation(); addToCart('UnderTale', 59.99)">Add To Cart</button>
-        </div>
- 
-        <div class="product" onclick="showDescription('Star Wars: Battlefront 2')">
-            <img src="Images/Star_wars_Battlefront 2.jpg" alt="Star Wars: BattleFront 2"/>
-            <h3>Star Wars: BattleFront 2</h3>
-            <p>P9.99</p>
-            <button class="btn" onclick="event.stopPropagation(); addToCart('Star Wars: BattleFront 2', 9.99)">Add To Cart</button>
-        </div>
- 
-        <div class="product" onclick="showDescription('Call Of Duty: Modern Warfare(2019)')">
-            <img src="Images/Call_of_Duty_Modern_Warfare_(2019)_cover.jpg" alt="Call Of Duty: Modern Warfare"/>
-            <h3>Call Of Duty: Modern Warfare</h3>
-            <p>P69.99</p>
-            <button class="btn" onclick="event.stopPropagation(); addToCart('Call Of Duty: Modern Warfare', 69.99)">Add To Cart</button>
-        </div>
- 
-        <div class="product" onclick="showDescription('Five Nights At Freddy's 2')">
-            <img src="Images/Five_night_at_freddy's_2.jpg" alt="Five Nights At Freddys 2"/>
-            <h3>Five Nights At Freddys 2</h3>
-            <p>P9.99</p>
-            <button class="btn" onclick="event.stopPropagation(); addToCart('Five Nights At Freddys 2', 9.99)">Add To Cart</button>
-        </div>
- 
-        <div class="product" onclick="showDescription('Amanda The Adventure')">
-            <img src="Images/Amanda_the_Adventurer_logo.png" alt="Amanda The Adventure"/>
-            <h3>Amanda The Adventure</h3>
-            <p>P14.99</p>
-            <button class="btn" onclick="event.stopPropagation(); addToCart('Amanda The Adventurer', 14.99)">Add To Cart</button>
-        </div>
- 
-        <div class="product" onclick="showDescription('Poppy Playtime')">
-            <img src="Images/poppy-playtime-yaypc.jpg" alt="Poppy Playtime"/>
-            <h3>Poppy Playtime</h3>
-            <p>P39.99</p>
-            <button class="btn" onclick="event.stopPropagation(); addToCart('Poppy Playtime', 39.99)">Add To Cart</button>
-        </div>
- 
-        <div class="product" onclick="showDescription('Elden Ring')">
-            <img src="Images/Elden_ring.jpg" alt="Elden Ring"/>
-            <h3>Elden Ring</h3>
-            <p>P59.99</p>
-            <button class="btn" onclick="event.stopPropagation(); addToCart('Elden Ring', 59.99)">Add To Cart</button>
-        </div>
- 
-        <div class="product" onclick="showDescription('Minecraft')">
-            <img src="Images/Minecraft.png" alt="Minecraft"/>
-            <h3>Minecraft</h3>
-            <p>P9.99</p>
-            <button class="btn" onclick="event.stopPropagation(); addToCart('Minecraft', 9.99)">Add To Cart</button>
-        </div>
+<body class="bg-dark text-light">
+
+  <header class="py-4 text-center">
+    <h1 class="fw-bold">KNO GAMES</h1>
+  </header>
+
+  <nav class="navbar navbar-expand-md navbar-dark bg-secondary mb-4">
+    <div class="container">
+      <button
+        class="navbar-toggler"
+        type="button"
+        data-bs-toggle="collapse"
+        data-bs-target="#navbarNav"
+        aria-controls="navbarNav"
+        aria-expanded="false"
+        aria-label="Toggle navigation"
+      >
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse justify-content-center" id="navbarNav">
+        <ul class="navbar-nav">
+          <li class="nav-item"><a class="nav-link active" href="index.html">Home</a></li>
+          <li class="nav-item"><a class="nav-link" href="mycart.html">MyCart</a></li>
+          <li class="nav-item"><a class="nav-link" href="checkout.html">Checkout</a></li>
+          <li class="nav-item"><a class="nav-link" href="contact.html">Contact</a></li>
+          <li class="nav-item"><a class="nav-link" href="about.html">About Us</a></li>
+        </ul>
+      </div>
     </div>
- 
-    <div id="description-box">
-        <h2 id="game-title"></h2>
-        <p id="game-description"></p>
-        <button class="btn" onclick="closeDescription()">Close</button>
+  </nav>
+
+  <main class="container">
+    <div class="row g-4">
+
+      <div class="col-sm-6 col-md-4 col-lg-3">
+        <div class="card bg-secondary text-light h-100">
+          <img src="Images/God_of_War_4_cover.jpg" class="card-img-top img-fluid p-3" alt="God Of War" />
+          <div class="card-body text-center d-flex flex-column">
+            <h5 class="card-title">God Of War</h5>
+            <p class="card-text fw-semibold">P75.99</p>
+            <button class="btn btn-primary mt-auto" disabled>Add To Cart</button>
+          </div>
+        </div>
+      </div>
+
+
+      <div class="col-sm-6 col-md-4 col-lg-3">
+        <div class="card bg-secondary text-light h-100">
+          <img src="Images/Zenless_Zone_Zero.png" class="card-img-top img-fluid p-3" alt="Zenless Zone Zero" />
+          <div class="card-body text-center d-flex flex-column">
+            <h5 class="card-title">Zenless Zone Zero</h5>
+            <p class="card-text fw-semibold">P50.99</p>
+            <button class="btn btn-primary mt-auto" disabled>Add To Cart</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-sm-6 col-md-4 col-lg-3">
+        <div class="card bg-secondary text-light h-100">
+          <img src="Images/Genshin_impact.jpg" class="card-img-top img-fluid p-3" alt="Genshin Impact" />
+          <div class="card-body text-center d-flex flex-column">
+            <h5 class="card-title">Genshin Impact</h5>
+            <p class="card-text fw-semibold">P29.99</p>
+            <button class="btn btn-primary mt-auto" disabled>Add To Cart</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-sm-6 col-md-4 col-lg-3">
+        <div class="card bg-secondary text-light h-100">
+          <img src="Images/wuthering-waves-uw6vy.jpg" class="card-img-top img-fluid p-3" alt="Wuthering Waves" />
+          <div class="card-body text-center d-flex flex-column">
+            <h5 class="card-title">Wuthering Waves</h5>
+            <p class="card-text fw-semibold">P29.99</p>
+            <button class="btn btn-primary mt-auto" disabled>Add To Cart</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-sm-6 col-md-4 col-lg-3">
+        <div class="card bg-secondary text-light h-100">
+          <img src="Images/Red_Dead_Redemption.jpg" class="card-img-top img-fluid p-3" alt="Red Dead Redemption" />
+          <div class="card-body text-center d-flex flex-column">
+            <h5 class="card-title">Red Dead Redemption</h5>
+            <p class="card-text fw-semibold">P60.99</p>
+            <button class="btn btn-primary mt-auto" disabled>Add To Cart</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-sm-6 col-md-4 col-lg-3">
+        <div class="card bg-secondary text-light h-100">
+          <img src="Images/Red_Dead_Redemption_2.png" class="card-img-top img-fluid p-3" alt="Red Dead Redemption 2" />
+          <div class="card-body text-center d-flex flex-column">
+            <h5 class="card-title">Red Dead Redemption 2</h5>
+            <p class="card-text fw-semibold">P75.95</p>
+            <button class="btn btn-primary mt-auto" disabled>Add To Cart</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-sm-6 col-md-4 col-lg-3">
+        <div class="card bg-secondary text-light h-100">
+          <img src="Images/250px-Portal_standalonebox.jpg" class="card-img-top img-fluid p-3" alt="Portal" />
+          <div class="card-body text-center d-flex flex-column">
+            <h5 class="card-title">Portal</h5>
+            <p class="card-text fw-semibold">P29.99</p>
+            <button class="btn btn-primary mt-auto" disabled>Add To Cart</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-sm-6 col-md-4 col-lg-3">
+        <div class="card bg-secondary text-light h-100">
+          <img src="Images/The_Last_of_Us.jpg" class="card-img-top img-fluid p-3" alt="The Last of Us" />
+          <div class="card-body text-center d-flex flex-column">
+            <h5 class="card-title">The Last of Us</h5>
+            <p class="card-text fw-semibold">P49.99</p>
+            <button class="btn btn-primary mt-auto" disabled>Add To Cart</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-sm-6 col-md-4 col-lg-3">
+        <div class="card bg-secondary text-light h-100">
+          <img src="Images/TLOU_P2_Box_Art_2.png" class="card-img-top img-fluid p-3" alt="The Last of Us 2" />
+          <div class="card-body text-center d-flex flex-column">
+            <h5 class="card-title">The Last of Us 2</h5>
+            <p class="card-text fw-semibold">P69.99</p>
+            <button class="btn btn-primary mt-auto" disabled>Add To Cart</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-sm-6 col-md-4 col-lg-3">
+        <div class="card bg-secondary text-light h-100">
+          <img src="Images/Rocket_League_cover.png" class="card-img-top img-fluid p-3" alt="Rocket League" />
+          <div class="card-body text-center d-flex flex-column">
+            <h5 class="card-title">Rocket League</h5>
+            <p class="card-text fw-semibold">P19.99</p>
+            <button class="btn btn-primary mt-auto" disabled>Add To Cart</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-sm-6 col-md-4 col-lg-3">
+        <div class="card bg-secondary text-light h-100">
+          <img src="Images/274px-Hollow_Knight_first_cover_art.webp.png" class="card-img-top img-fluid p-3" alt="Hollow Knight" />
+          <div class="card-body text-center d-flex flex-column">
+            <h5 class="card-title">Hollow Knight</h5>
+            <p class="card-text fw-semibold">P49.99</p>
+            <button class="btn btn-primary mt-auto" disabled>Add To Cart</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-sm-6 col-md-4 col-lg-3">
+        <div class="card bg-secondary text-light h-100">
+          <img src="Images/Marvels_spider_man.png" class="card-img-top img-fluid p-3" alt="SpiderMan" />
+          <div class="card-body text-center d-flex flex-column">
+            <h5 class="card-title">SpiderMan</h5>
+            <p class="card-text fw-semibold">P79.99</p>
+            <button class="btn btn-primary mt-auto" disabled>Add To Cart</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-sm-6 col-md-4 col-lg-3">
+        <div class="card bg-secondary text-light h-100">
+          <img src="Images/Undertale.jpg" class="card-img-top img-fluid p-3" alt="Undertale" />
+          <div class="card-body text-center d-flex flex-column">
+            <h5 class="card-title">Undertale</h5>
+            <p class="card-text fw-semibold">P59.99</p>
+            <button class="btn btn-primary mt-auto" disabled>Add To Cart</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-sm-6 col-md-4 col-lg-3">
+        <div class="card bg-secondary text-light h-100">
+          <img src="Images/Star_wars_Battlefront 2.jpg" class="card-img-top img-fluid p-3" alt="Star Wars: BattleFront 2" />
+          <div class="card-body text-center d-flex flex-column">
+            <h5 class="card-title">Star Wars: BattleFront 2</h5>
+            <p class="card-text fw-semibold">P9.99</p>
+            <button class="btn btn-primary mt-auto" disabled>Add To Cart</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-sm-6 col-md-4 col-lg-3">
+        <div class="card bg-secondary text-light h-100">
+          <img src="Images/Call_of_Duty_Modern_Warfare_(2019)_cover.jpg" class="card-img-top img-fluid p-3" alt="Call of Duty: Modern Warfare" />
+          <div class="card-body text-center d-flex flex-column">
+            <h5 class="card-title">Call OF Duty: Modern Warfare</h5>
+            <p class="card-text fw-semibold">P69.99</p>
+            <button class="btn btn-primary mt-auto" disabled>Add To Cart</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-sm-6 col-md-4 col-lg-3">
+        <div class="card bg-secondary text-light h-100">
+          <img src="Images/Five_night_at_freddy's_2.jpg" class="card-img-top img-fluid p-3" alt="Five Nights At Freddys 2" />
+          <div class="card-body text-center d-flex flex-column">
+            <h5 class="card-title">Five Nights At Freddy's 2</h5>
+            <p class="card-text fw-semibold">P9.99</p>
+            <button class="btn btn-primary mt-auto" disabled>Add To Cart</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-sm-6 col-md-4 col-lg-3">
+        <div class="card bg-secondary text-light h-100">
+          <img src="Images/Amanda_the_Adventurer_logo.png" class="card-img-top img-fluid p-3" alt="Amanda The Adventure" />
+          <div class="card-body text-center d-flex flex-column">
+            <h5 class="card-title">Amanda The Adventure</h5>
+            <p class="card-text fw-semibold">P14.99</p>
+            <button class="btn btn-primary mt-auto" disabled>Add To Cart</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-sm-6 col-md-4 col-lg-3">
+        <div class="card bg-secondary text-light h-100">
+          <img src="Images/poppy-playtime-yaypc.jpg" class="card-img-top img-fluid p-3" alt="Poppy Playtime" />
+          <div class="card-body text-center d-flex flex-column">
+            <h5 class="card-title">Poppy Playtime</h5>
+            <p class="card-text fw-semibold">P39.99</p>
+            <button class="btn btn-primary mt-auto" disabled>Add To Cart</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-sm-6 col-md-4 col-lg-3">
+        <div class="card bg-secondary text-light h-100">
+          <img src="Images/Elden_ring.jpg" class="card-img-top img-fluid p-3" alt="Elden Ring" />
+          <div class="card-body text-center d-flex flex-column">
+            <h5 class="card-title">Elden Ring</h5>
+            <p class="card-text fw-semibold">P59.99</p>
+            <button class="btn btn-primary mt-auto" disabled>Add To Cart</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-sm-6 col-md-4 col-lg-3">
+        <div class="card bg-secondary text-light h-100">
+          <img src="Images/Minecraft.png" class="card-img-top img-fluid p-3" alt="Minecraft" />
+          <div class="card-body text-center d-flex flex-column">
+            <h5 class="card-title">Portal</h5>
+            <p class="card-text fw-semibold">P9.99</p>
+            <button class="btn btn-primary mt-auto" disabled>Add To Cart</button>
+          </div>
+        </div>
+      </div>
+
+
     </div>
- 
-    <script src="script.js"></script>
+  </main>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
+
