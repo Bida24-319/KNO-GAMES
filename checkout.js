@@ -34,3 +34,20 @@ document.getElementById("checkout-form").addEventListener("submit", function (e)
     window.location.href = "index.html";
   }, 5000);
 });
+form.addEventListener("submit", function (e) {
+  e.preventDefault();
+
+  // Hide the form
+  form.style.display = "none";
+
+  // Show the thank-you message
+  successAlert.style.display = "block";
+
+  // Clear the cart
+  localStorage.removeItem("cart");
+
+  // Optional redirect
+  setTimeout(() => {
+    window.location.href = "index.html";
+  }, 5000);
+});
