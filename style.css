@@ -1,166 +1,130 @@
-/* Reset & base styles */
+/* General Reset (if needed) */
 * {
-  margin: 0;
-  padding: 0;
   box-sizing: border-box;
 }
- 
+
 body {
-  font-family: Arial, sans-serif;
-  line-height: 1.6;
-  background-color: #f4f4f4;
-  color: #333;
-  padding-bottom: 40px;
+  background-color: #f8f9fa; /* Bootstrap light gray */
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
- 
+
+/* Header */
 header {
-  background-color: #222;
+  background-color: #212529;
   color: white;
   padding: 20px 0;
   text-align: center;
 }
- 
+
+/* Navigation */
 nav {
-  background-color: #444;
+  background-color: #343a40;
+  text-align: center;
   padding: 10px;
-  text-align: center;
 }
- 
+
 nav a {
-  color: white;
+  color: #ffffff;
+  margin: 0 12px;
+  font-weight: 600;
   text-decoration: none;
-  margin: 0 15px;
-  font-weight: bold;
 }
- 
+
 nav a:hover {
-  color: #ffd700;
+  color: #ffc107; /* Bootstrap warning yellow */
 }
- 
-main.content {
-  padding: 20px;
-  max-width: 1000px;
-  margin: auto;
-}
- 
-.games {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 20px;
-  justify-content: center;
-  margin-tp: 20px;
-}
- 
+
+/* Game Cards */
 .game-card {
-  background: white;
-  border-radius: 8px;
-  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
-  padding: 15px;
-  width: 200px;
-  text-align: center;
-  transition: transform 0.2s ease;
+  background-color: #fff;
+  border-radius: 10px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.15);
+  overflow: hidden;
+  transition: transform 0.2s ease-in-out;
 }
- 
+
 .game-card:hover {
-  transform: scale(1.05);
+  transform: scale(1.03);
 }
- 
+
 .game-card img {
   width: 100%;
-  border-radius: 6px;
-  cursor: pointer;
+  height: auto;
 }
- 
-.btn {
-  margin-top: 10px;
-  background-color: #28a745;
-  color: white;
-  border: none;
-  padding: 8px 12px;
-  border-radius: 4px;
-  cursor: pointer;
+
+.game-card .card-body {
+  text-align: center;
 }
- 
-.btn:hover {
-  background-color: #218838;
-}
- 
-/* Description popup */
+
+/* Description Popup */
 #description-box {
   position: fixed;
   top: 20%;
   left: 50%;
   transform: translateX(-50%);
   background: white;
-  border: 2px solid #ccc;
+  border: 2px solid #dee2e6;
   padding: 20px;
-  z-index: 999;
+  z-index: 1050;
   width: 300px;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+  box-shadow: 0 0 10px rgba(0,0,0,0.25);
   display: none;
 }
- 
-/* Cart & Checkout */
-.cart {
-  background: white;
-  padding: 20px;
-  margin-top: 30px;
-  border-radius: 8px;
-  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
-}
- 
-ul {
-  list-style: none;
-  padding-left: 0;
-}
- 
-.checkout-btn {
-  background-color: #007bff;
-  padding: 10px 16px;
+
+/* Buttons */
+.btn-custom-green {
+  background-color: #28a745;
   color: white;
-  border: none;
-  border-radius: 5px;
-  margin-top: 10px;
-  cursor: pointer;
-}
- 
-.checkout-btn:hover {
-  background-color: #0069d9;
-}
- 
-/* Form */
-form input,
-form textarea {
-  width: 100%;
-  padding: 8px;
-  margin-bottom: 12px;
-  border: 1px solid #ccc;
-  border-radius: 4px;
-}
- 
-form button {
-  background-color: #17a2b8;
-  color: white;
-  border: none;
-  padding: 10px 16px;
-  border-radius: 4px;
-  cursor: pointer;
-}
- 
-form button:hover {
-  background-color: #138496;
-}
-@media (max-width: 768px) {
-  .games {
-    grid-template-columns: repeat(2, 1fr); /* 2 columns on tablets */
-  }
 }
 
-@media (max-width: 500px) {
-  .games {
-    grid-template-columns: 1fr; /* 1 column on phones */
-  }
+.btn-custom-green:hover {
+  background-color: #218838;
 }
+
+/* Footer */
+footer {
+  background-color: #212529;
+  color: #fff;
+  text-align: center;
+  padding: 10px 0;
+  margin-top: 40px;
+}
+
+/* Team Section */
+.team-member {
+  margin-bottom: 20px;
+}
+
+/* Cart Drawer (if used) */
+#cart-drawer {
+  position: fixed;
+  right: 0;
+  top: 0;
+  height: 100%;
+  width: 300px;
+  background: #ffffff;
+  box-shadow: -2px 0 10px rgba(0,0,0,0.2);
+  padding: 20px;
+  display: none;
+  z-index: 1040;
+}
+
+/* Floating Cart Button */
+#floating-cart-btn {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  background-color: #ffc107;
+  border: none;
+  color: black;
+  border-radius: 50%;
+  width: 50px;
+  height: 50px;
+  font-weight: bold;
+  z-index: 1030;
+  box-shadow: 0 4px 6px rgba(0,0,0,0.2);
+}
+
 
 
 
