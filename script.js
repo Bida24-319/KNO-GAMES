@@ -95,20 +95,18 @@ function updateCartCount() {
     countElement.textContent = totalItems;
   }
 }
-
-// =====================
-// Cart Actions
-// =====================
 function addToCart(product, price) {
-  const index = cart.findIndex(item => item.product === product);
+  const index = cart.findIndex(item => item.name === product);
   if (index !== -1) {
     cart[index].quantity += 1;
   } else {
-    cart.push({ product, price, quantity: 1 });
+    cart.push({ name: product, price: price, quantity: 1 });
   }
+
   saveCart();
   renderCart();
 }
+
 
 function changeQuantity(index, delta) {
   if (!cart[index]) return;
@@ -134,9 +132,7 @@ function clearCart() {
   }
 }
 
-// =====================
-// Render Functions
-// =====================
+
 function renderCart() {
   const cartList = document.getElementById("cart-items");
   const totalElement = document.getElementById("total");
@@ -182,9 +178,7 @@ function renderDrawerCart() {
   totalElement.textContent = total.toFixed(2);
 }
 
-// =====================
-// Description Handling
-// =====================
+
 function showDescription(key) {
   const data = gameData[key];
   if (!data) return;
@@ -202,9 +196,7 @@ function closeDescription() {
   if (box) box.style.display = "none";
 }
 
-// =====================
-// Cart Drawer Toggle
-// =====================
+
 function toggleCartDrawer() {
   const drawer = document.getElementById("cart-drawer");
   if (!drawer) return;
@@ -213,9 +205,7 @@ function toggleCartDrawer() {
   renderDrawerCart();
 }
 
-// =====================
-// Event Listeners (Safe for all pages)
-// =====================
+
 document.addEventListener("DOMContentLoaded", () => {
   renderCart();
   updateCartCount();
