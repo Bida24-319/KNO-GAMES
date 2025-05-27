@@ -1,8 +1,13 @@
 document.addEventListener("DOMContentLoaded", () => {
-  let cart = JSON.parse(localStorage.getItem("cart")) || [];
   const cartList = document.getElementById("cart-items");
   const totalSpan = document.getElementById("total");
   const emptyMessage = document.getElementById("empty-message");
+
+  let cart = loadCart();
+
+  function loadCart() {
+    return JSON.parse(localStorage.getItem("cart")) || [];
+  }
 
   function saveCart() {
     localStorage.setItem("cart", JSON.stringify(cart));
@@ -27,10 +32,10 @@ document.addEventListener("DOMContentLoaded", () => {
 
       const li = document.createElement("li");
       li.innerHTML = `
-        ${item.name} - P${item.price.toFixed(2)} x ${quantity} = P${subtotal.toFixed(2)}
-        <button class="increase" data-index="${index}">+</button>
-        <button class="decrease" data-index="${index}">−</button>
-        <button class="remove" data-index="${index}">Remove</button>
+        ${item.name} - ₱${item.price.toFixed(2)} x ${quantity} = ₱${subtotal.toFixed(2)}
+        <button class="btn btn-sm btn-success increase" data-index="${index}">+</button>
+        <button class="btn btn-sm btn-warning decrease" data-index="${index}">−</button>
+        <button class="btn btn-sm btn-danger remove" data-index="${index}">Remove</button>
       `;
       cartList.appendChild(li);
     });
@@ -39,38 +44,33 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   function changeQuantity(index, amount) {
-    if (cart[index]) {
-      cart[index].quantity = (cart[index].quantity || 1) + amount;
-      if (cart[index].quantity <= 0) {
-        cart.splice(index, 1); // Remove item if quantity drops to 0 or less
-      }
-      saveCart();
-      updateCartView();
+    if (!cart[index]) return;
+    cart[index].quantity = (cart[index].quantity || 1) + amount;
+    if (cart[index].quantity <= 0) {
+      cart.splice(index, 1);
     }
+    saveCart();
+    updateCartView();
   }
 
   function removeFromCart(index) {
-    if (cart[index]) {
-      cart.splice(index, 1);
-      saveCart();
-      updateCartView();
-    }
+    if (!cart[index]) return;
+    cart.splice(index, 1);
+    saveCart();
+    updateCartView();
   }
 
   function clearCart() {
-    const confirmClear = confirm("Are you sure you want to clear the cart?");
-    if (confirmClear) {
+    if (confirm("Are you sure you want to clear the cart?")) {
       cart = [];
       saveCart();
       updateCartView();
     }
   }
 
-  // Event delegation for buttons inside the cart list
   cartList.addEventListener("click", (e) => {
-    if (!e.target.dataset.index) return;
-
     const index = parseInt(e.target.dataset.index, 10);
+    if (isNaN(index)) return;
 
     if (e.target.classList.contains("increase")) {
       changeQuantity(index, 1);
@@ -81,9 +81,10 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   });
 
-  // Expose clearCart to global so you can attach it to a button outside if needed
+  // Expose clearCart globally
   window.clearCart = clearCart;
 
   updateCartView();
 });
+
 
