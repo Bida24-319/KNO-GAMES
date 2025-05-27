@@ -3,46 +3,34 @@ document.addEventListener("DOMContentLoaded", function () {
   const cartList = document.getElementById("checkout-cart");
   const totalElement = document.getElementById("checkout-total");
 
-  if (!cartList || !totalElement) return; // Safety check if elements missing
-
   let total = 0;
   cartItems.forEach(item => {
     const li = document.createElement("li");
-    li.textContent = `${item.product} - P${(item.price * item.quantity).toFixed(2)} x ${item.quantity}`;
+    li.textContent = `${item.product} - ₱${item.price.toFixed(2)} x ${item.quantity || 1}`;
     cartList.appendChild(li);
-    total += item.price * item.quantity;
+    total += item.price * (item.quantity || 1);
   });
 
-  totalElement.textContent = `P${total.toFixed(2)}`;
+  totalElement.textContent = `₱${total.toFixed(2)}`;
 });
 
-const checkoutForm = document.getElementById("checkout-form");
+document.getElementById("checkout-form").addEventListener("submit", function (e) {
+  e.preventDefault();
 
-if (checkoutForm) {
-  checkoutForm.addEventListener("submit", function (e) {
-    e.preventDefault();
+  // Generate random order number starting with GH + 5 digits
+  const orderNumber = "GH" + Math.floor(Math.random() * 90000 + 10000);
+  document.getElementById("order-number").textContent = orderNumber;
 
-    // Generate random order number
-    const orderNumber = "GH" + Math.floor(Math.random() * 90000 + 10000);
-    const orderNumberElement = document.getElementById("order-number");
-    if (orderNumberElement) {
-      orderNumberElement.textContent = orderNumber;
-    }
+  // Hide checkout form and show confirmation message
+  document.getElementById("checkout-form").style.display = "none";
+  document.getElementById("confirmation").style.display = "block";
 
-    // Hide form, show confirmation message
-    this.style.display = "none";
-    const confirmation = document.getElementById("confirmation");
-    if (confirmation) {
-      confirmation.style.display = "block";
-    }
+  // Clear the cart from localStorage
+  localStorage.removeItem("cart");
+  localStorage.removeItem("total");
 
-    // Clear cart data
-    localStorage.removeItem("cart");
-    localStorage.removeItem("total");
-
-    // Redirect back to home after 5 seconds
-    setTimeout(() => {
-      window.location.href = "index.html";
-    }, 5000);
-  });
-}
+  // Redirect to home page after 5 seconds
+  setTimeout(() => {
+    window.location.href = "index.html";
+  }, 5000);
+});
