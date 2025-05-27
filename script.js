@@ -83,7 +83,22 @@ const gameData = {
 
 let cart = JSON.parse(localStorage.getItem("cart")) || [];
 
-// Add item to cart with quantity check
+function saveCart() {
+  localStorage.setItem("cart", JSON.stringify(cart));
+  updateCartCount();
+}
+
+function updateCartCount() {
+  const countElement = document.getElementById("cart-count");
+  if (countElement) {
+    const totalItems = cart.reduce((sum, item) => sum + item.quantity, 0);
+    countElement.textContent = totalItems;
+  }
+}
+
+// =====================
+// Cart Actions
+// =====================
 function addToCart(product, price) {
   const index = cart.findIndex(item => item.product === product);
   if (index !== -1) {
@@ -95,42 +110,48 @@ function addToCart(product, price) {
   renderCart();
 }
 
-// Save to localStorage
-function saveCart() {
-  localStorage.setItem("cart", JSON.stringify(cart));
-}
-
-// Remove item completely
-function removeFromCart(index) {
-  cart.splice(index, 1);
-  saveCart();
-  renderCart();
-}
-
-// Update quantity
 function changeQuantity(index, delta) {
+  if (!cart[index]) return;
   cart[index].quantity += delta;
-  if (cart[index].quantity < 1) {
-    cart.splice(index, 1); // Remove if quantity becomes 0
-  }
+  if (cart[index].quantity < 1) cart.splice(index, 1);
   saveCart();
   renderCart();
 }
 
-// Render cart
+function removeFromCart(index) {
+  if (cart[index]) {
+    cart.splice(index, 1);
+    saveCart();
+    renderCart();
+  }
+}
+
+function clearCart() {
+  if (confirm("Are you sure you want to clear the cart?")) {
+    cart = [];
+    saveCart();
+    renderCart();
+  }
+}
+
+// =====================
+// Render Functions
+// =====================
 function renderCart() {
   const cartList = document.getElementById("cart-items");
   const totalElement = document.getElementById("total");
-  cartList.innerHTML = "";
+  if (!cartList || !totalElement) return;
 
+  cartList.innerHTML = "";
   let total = 0;
+
   cart.forEach((item, index) => {
-    const itemTotal = item.price * item.quantity;
-    total += itemTotal;
+    const subtotal = item.price * item.quantity;
+    total += subtotal;
 
     const li = document.createElement("li");
     li.innerHTML = `
-      ${item.product} - P${item.price.toFixed(2)} x ${item.quantity} = P${itemTotal.toFixed(2)}
+      ${item.product} - P${item.price.toFixed(2)} x ${item.quantity} = P${subtotal.toFixed(2)}
       <button class="increase" data-index="${index}">+</button>
       <button class="decrease" data-index="${index}">−</button>
       <button class="remove" data-index="${index}">Remove</button>
@@ -141,79 +162,86 @@ function renderCart() {
   totalElement.textContent = total.toFixed(2);
 }
 
-// Show game description
-function showDescription(key) {
-  if (!gameData[key]) return;
-  document.getElementById("game-title").textContent = gameData[key].title;
-  document.getElementById("game-description").textContent = gameData[key].description;
-  document.getElementById("description-box").style.display = "block";
-}
-
-function closeDescription() {
-  document.getElementById("description-box").style.display = "none";
-}
-
-function goToCheckout() {
-  window.location.href = "checkout.html";
-}
-
-// On page load
-document.addEventListener("DOMContentLoaded", renderCart);
-
-function clearCart() {
-  const confirmClear = confirm("Are you sure you want to clear the cart?");
-  if (confirmClear) {
-    cart = [];
-    saveCart();
-    renderCart();
-  }
-}
-
-function updateCartCount() {
-  const countElement = document.getElementById("cart-count");
-  if (countElement) {
-    const totalItems = cart.reduce((sum, item) => sum + item.quantity, 0);
-    countElement.textContent = totalItems;
-  }
-}
-function saveCart() {
-  localStorage.setItem("cart", JSON.stringify(cart));
-  updateCartCount();
-}
-
-document.getElementById("cart-items").addEventListener("click", (e) => {
-  const index = parseInt(e.target.dataset.index);
-  if (e.target.classList.contains("increase")) {
-    changeQuantity(index, 1);
-  } else if (e.target.classList.contains("decrease")) {
-    changeQuantity(index, -1);
-  } else if (e.target.classList.contains("remove")) {
-    removeFromCart(index);
-  }
-});
-
-document.getElementById("floating-cart-btn").addEventListener("click", toggleCartDrawer);
-
-function toggleCartDrawer() {
-  const drawer = document.getElementById("cart-drawer");
-  drawer.classList.toggle("open");
-  renderDrawerCart();
-}
-
 function renderDrawerCart() {
   const drawerList = document.getElementById("drawer-cart-items");
   const totalElement = document.getElementById("drawer-total");
-  drawerList.innerHTML = "";
+  if (!drawerList || !totalElement) return;
 
+  drawerList.innerHTML = "";
   let total = 0;
+
   cart.forEach(item => {
-    const itemTotal = item.price * item.quantity;
-    total += itemTotal;
+    const subtotal = item.price * item.quantity;
+    total += subtotal;
+
     const li = document.createElement("li");
-    li.textContent = `${item.product} - P${item.price.toFixed(2)} x ${item.quantity} = P${itemTotal.toFixed(2)}`;
+    li.textContent = `${item.product} - P${item.price.toFixed(2)} x ${item.quantity} = P${subtotal.toFixed(2)}`;
     drawerList.appendChild(li);
   });
 
   totalElement.textContent = total.toFixed(2);
 }
+
+// =====================
+// Description Handling
+// =====================
+function showDescription(key) {
+  const data = gameData[key];
+  if (!data) return;
+
+  const box = document.getElementById("description-box");
+  if (!box) return;
+
+  document.getElementById("game-title").textContent = data.title;
+  document.getElementById("game-description").textContent = data.description;
+  box.style.display = "block";
+}
+
+function closeDescription() {
+  const box = document.getElementById("description-box");
+  if (box) box.style.display = "none";
+}
+
+// =====================
+// Cart Drawer Toggle
+// =====================
+function toggleCartDrawer() {
+  const drawer = document.getElementById("cart-drawer");
+  if (!drawer) return;
+
+  drawer.classList.toggle("open");
+  renderDrawerCart();
+}
+
+// =====================
+// Event Listeners (Safe for all pages)
+// =====================
+document.addEventListener("DOMContentLoaded", () => {
+  renderCart();
+  updateCartCount();
+
+  // Cart item button events
+  const cartList = document.getElementById("cart-items");
+  if (cartList) {
+    cartList.addEventListener("click", (e) => {
+      const index = parseInt(e.target.dataset.index);
+      if (e.target.classList.contains("increase")) changeQuantity(index, 1);
+      if (e.target.classList.contains("decrease")) changeQuantity(index, -1);
+      if (e.target.classList.contains("remove")) removeFromCart(index);
+    });
+  }
+
+  // Floating cart toggle
+  const cartBtn = document.getElementById("floating-cart-btn");
+  if (cartBtn) cartBtn.addEventListener("click", toggleCartDrawer);
+});
+
+// =====================
+// Global Access (optional)
+// =====================
+window.addToCart = addToCart;
+window.clearCart = clearCart;
+window.showDescription = showDescription;
+window.closeDescription = closeDescription;
+window.goToCheckout = () => window.location.href = "checkout.html";
 
