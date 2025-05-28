@@ -4,12 +4,17 @@ document.addEventListener("DOMContentLoaded", function () {
   const totalElement = document.getElementById("checkout-total");
 
   let total = 0;
-  cartItems.forEach(item => {
-    const li = document.createElement("li");
-    li.textContent = `${item.product} - ₱${item.price.toFixed(2)} x ${item.quantity || 1}`;
-    cartList.appendChild(li);
-    total += item.price * (item.quantity || 1);
-  });
+  const cart = JSON.parse(localStorage.getItem("cart")) || [];
+
+cart.forEach(item => {
+  const name = item.name || "Unknown Item"; // Fallback if name is undefined
+  const price = item.price.toFixed(2);
+  const quantity = item.quantity;
+
+  const cartItemHTML = `<li>${name} - ₱${price} x ${quantity}</li>`;
+  document.getElementById("cartItems").innerHTML += cartItemHTML;
+});
+
 
   totalElement.textContent = `₱${total.toFixed(2)}`;
 });
