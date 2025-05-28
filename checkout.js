@@ -51,3 +51,9 @@ form.addEventListener("submit", function (e) {
     window.location.href = "index.html";
   }, 5000);
 });
+
+document.querySelector('.alert-success').style.display = 'block';
+setTimeout(() => {
+  window.location.href = 'index.html'; // Change to your actual homepage
+}, 5000); // 5 seconds
+
