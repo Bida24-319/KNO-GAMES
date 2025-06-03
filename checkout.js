@@ -11,7 +11,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
     total += price * quantity;
 
-    const cartItemHTML = `<li>${name} - ₱${price.toFixed(2)} x ${quantity}</li>`;
+    const cartItemHTML = `<li class="list-group-item bg-dark text-light border-light">${name} - ₱${price.toFixed(2)} x ${quantity}</li>`;
     cartList.innerHTML += cartItemHTML;
   });
 
@@ -25,17 +25,17 @@ document.getElementById("checkout-form").addEventListener("submit", function (e)
   document.getElementById("order-number").textContent = orderNumber;
 
   document.getElementById("checkout-form").style.display = "none";
-  document.getElementById("confirmation").style.display = "block";
 
-  localStorage.removeItem("cart");
-
-  // Optional: show thank-you alert
+  // Show thank-you alert
   const successAlert = document.querySelector(".alert-success");
   if (successAlert) {
     successAlert.style.display = "block";
   }
 
+  localStorage.removeItem("cart");
+
   setTimeout(() => {
     window.location.href = "index.html";
   }, 5000);
 });
+
