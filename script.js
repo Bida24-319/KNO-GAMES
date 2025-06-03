@@ -221,14 +221,11 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   }
 
-  // Floating cart toggle
+  
   const cartBtn = document.getElementById("floating-cart-btn");
   if (cartBtn) cartBtn.addEventListener("click", toggleCartDrawer);
-});
+})
 
-// =====================
-// Global Access (optional)
-// =====================
 window.addToCart = addToCart;
 window.clearCart = clearCart;
 window.showDescription = showDescription;
