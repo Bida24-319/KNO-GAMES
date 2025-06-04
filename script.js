@@ -95,12 +95,12 @@ function updateCartCount() {
     countElement.textContent = totalItems;
   }
 }
-function addToCart(product, price) {
+function addToCart(product, price, description) {
   const index = cart.findIndex(item => item.name === product);
   if (index !== -1) {
     cart[index].quantity += 1;
   } else {
-    cart.push({ name: product, price: price, quantity: 1 });
+    cart.push({ name: product, price: price, description: description, quantity: 1 });
   }
 
   saveCart();
@@ -147,11 +147,15 @@ function renderCart() {
 
     const li = document.createElement("li");
     li.innerHTML = `
-      ${item.product} - P${item.price.toFixed(2)} x ${item.quantity} = P${subtotal.toFixed(2)}
-      <button class="increase" data-index="${index}">+</button>
-      <button class="decrease" data-index="${index}">−</button>
-      <button class="remove" data-index="${index}">Remove</button>
-    `;
+     <div>
+    <strong>${item.name}</strong><br>
+    <small>${item.description || "No description"}</small><br>
+    P${item.price.toFixed(2)} x ${item.quantity} = P${subtotal.toFixed(2)}
+    <button class="increase" data-index="${index}">+</button>
+    <button class="decrease" data-index="${index}">−</button>
+    <button class="remove" data-index="${index}">Remove</button>
+  </div>
+`;
     cartList.appendChild(li);
   });
 
