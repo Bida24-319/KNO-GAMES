@@ -1,14 +1,14 @@
-/* General Reset (if needed) */
+
 * {
   box-sizing: border-box;
 }
 
 body {
-  background-color: #f8f9fa; /* Bootstrap light gray */
+  background-color: #f8f9fa; 
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
-/* Header */
+
 header {
   background-color: #212529;
   color: white;
@@ -16,7 +16,7 @@ header {
   text-align: center;
 }
 
-/* Navigation */
+
 nav {
   background-color: #343a40;
   text-align: center;
@@ -31,10 +31,10 @@ nav a {
 }
 
 nav a:hover {
-  color: #ffc107; /* Bootstrap warning yellow */
+  color: #ffc107; 
 }
 
-/* Game Cards */
+
 .game-card {
   background-color: #fff;
   border-radius: 10px;
@@ -56,7 +56,7 @@ nav a:hover {
   text-align: center;
 }
 
-/* Description Popup */
+
 #description-box {
   position: fixed;
   top: 20%;
@@ -71,7 +71,7 @@ nav a:hover {
   display: none;
 }
 
-/* Buttons */
+
 .btn-custom-green {
   background-color: #28a745;
   color: white;
@@ -81,7 +81,7 @@ nav a:hover {
   background-color: #218838;
 }
 
-/* Footer */
+
 footer {
   background-color: #212529;
   color: #fff;
@@ -90,12 +90,12 @@ footer {
   margin-top: 40px;
 }
 
-/* Team Section */
+
 .team-member {
   margin-bottom: 20px;
 }
 
-/* Cart Drawer (if used) */
+
 #cart-drawer {
   position: fixed;
   right: 0;
@@ -109,7 +109,7 @@ footer {
   z-index: 1040;
 }
 
-/* Floating Cart Button */
+
 #floating-cart-btn {
   position: fixed;
   bottom: 20px;
